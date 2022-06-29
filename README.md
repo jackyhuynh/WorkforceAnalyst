@@ -23,7 +23,29 @@ software engineering and artificial intelligence (AI).
 - Software costs often dominate computer system costs. The costs of software on a PC are often greater than the hardware cost
 - Software costs more to maintain than it does to develop. 
 
+#### 3. Software process activities:
+- Software specification, where customers and engineers
+define the software that is to be produced and the
+constraints on its operation.
+- Software development, where the software is designed
+and programmed.
+- Software validation, where the software is checked to
+ensure that it is what the customer requires.
+- Software evolution, where the software is modified to
+reflect changing customer and market requirements.
 
+#### 4. Application Types:
+- Stand-alone Applications: run on local PCs. They included all necessary functionality and do not need to be connected to a network.
+- Interactive transaction-based applications: Applications that execute on a remoted computer and are accessed by users from their owns PCs or terminals. These include web applications
+- Embedded Control System: These are software control systems that control and manage hardware devices. Numerically, there are more embedded systems than any other type of system.
+- Batch Processing System: These are business systems that are designed to process data in large batches. 
+They process large numbers of individual inputs to create corresponding outputs.
+- Entertainment System: Personal Use and intended to entertain the user.
+- System for modeling and simulation:These are systems that are developed by scientists and
+engineers to model physical processes or situations, which
+include many, separate, interacting objects
+- Data Collections Systems: System that collects data from their environment using a set of sensors and send that data to other system for processing.
+- Systems of systems: System that consists of other systems
 ## References:
 - [Python 3 Standard Library](https://docs.python.org/3/index.html)
 
