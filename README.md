@@ -13,9 +13,16 @@ Apply software engineering principles to applications for artificial intelligenc
 software engineering and artificial intelligence (AI).
 
 ### Introduction to Software Engineering:
+
+#### 1. What is Software Engineering:
 - Software help develop country's economies
 - Software Engineering is concerned with theories, methods and tools for professional Software Development
-- 
+- Expenditure on software represents a significant fraction of GNP (Gross National Product) in all developed countries.
+
+#### 2. Software Costs:
+- Software costs often dominate computer system costs. The costs of software on a PC are often greater than the hardware cost
+- Software costs more to maintain than it does to develop. 
+
 
 ## References:
 - [Python 3 Standard Library](https://docs.python.org/3/index.html)
