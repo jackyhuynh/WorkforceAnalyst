@@ -1,4 +1,5 @@
-# TEMPLATE for PYTHON Developer using PYCHARM
+# A Summary of Software AI Development:
+# Case Study Indeed Job Analyst
 
 ## Introduction
 
