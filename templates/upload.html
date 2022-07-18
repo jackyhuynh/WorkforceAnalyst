@@ -1,5 +1,8 @@
-{% include "header.html" %}
+{% extends 'bootstrap/base.html' %}
+{% import "bootstrap/wtf.html" as wtf %}
 
+{% block content %}
+{% include "header.html" %}
   <!-- Page Header -->
   <header class="masthead" style="background-image: url({{url_for('static', filename='img/home-bg.jpg')}})">
     <div class="overlay"></div>
@@ -15,19 +18,31 @@
     </div>
   </header>
 
-    <body>
-    <div class="container">
-        <h1>Upload new File</h1>
-        <form class="container" method=post enctype=multipart/form-data>
-          <div class="clearfix">
-            <input type=file name=file>
-          </div>
 
-          <div class="clearfix">
+    <div class="container">
+        <h1>Upload New Resume</h1>
+        <form class="container" method=post enctype=multipart/form-data>
+          <div class="row">
+            <input type=file name=file>
             <input class="btn btn-primary float-right" type=submit value=Upload href="{{url_for('get_all_posts')}}">
           </div>
         </form>
     </div>
-    </body>
+
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-md-10 mx-auto content">
+      {% with messages = get_flashed_messages() %}
+        {% if messages %}
+          {% for message in messages %}
+           <p>{{ message }}</p>
+          {% endfor %}
+        {% endif %}
+      {% endwith %}
+      </div>
+    </div>
+  </div>
+
 
 {% include "footer.html" %}
+{% endblock %}
