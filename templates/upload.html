@@ -1,6 +1,5 @@
 {% include "header.html" %}
 
-
   <!-- Page Header -->
   <header class="masthead" style="background-image: url({{url_for('static', filename='img/home-bg.jpg')}})">
     <div class="overlay"></div>
@@ -17,10 +16,18 @@
   </header>
 
     <body>
+    <div class="container">
         <h1>Upload new File</h1>
-        <form method=post enctype=multipart/form-data>
-          <input type=file name=file>
-          <input type=submit value=Upload>
+        <form class="container" method=post enctype=multipart/form-data>
+          <div class="clearfix">
+            <input type=file name=file>
+          </div>
+
+          <div class="clearfix">
+            <input class="btn btn-primary float-right" type=submit value=Upload href="{{url_for('get_all_posts')}}">
+          </div>
         </form>
+    </div>
     </body>
+
 {% include "footer.html" %}
