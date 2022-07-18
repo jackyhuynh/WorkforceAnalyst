@@ -1,0 +1,26 @@
+{% include "header.html" %}
+
+
+  <!-- Page Header -->
+  <header class="masthead" style="background-image: url({{url_for('static', filename='img/home-bg.jpg')}})">
+    <div class="overlay"></div>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+          <div class="site-heading">
+            <h1>Indeeds Job Recommend System</h1>
+            <span class="subheading">AI Based Application for job recommendation</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+    <body>
+        <h1>Upload new File</h1>
+        <form method=post enctype=multipart/form-data>
+          <input type=file name=file>
+          <input type=submit value=Upload>
+        </form>
+    </body>
+{% include "footer.html" %}
