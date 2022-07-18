@@ -28,8 +28,8 @@ login_manager = LoginManager()
 login_manager.init_app(app)
 
 ##UPLOAD FILE
-UPLOAD_FOLDER = 'C:/Users/jacky/Documents/GitHub/indeed_job_analyst_using_python/data'
-ALLOWED_EXTENSIONS = {'txt', 'pdf', 'png', 'jpg', 'jpeg', 'gif', 'docx'}
+UPLOAD_FOLDER = './data'
+ALLOWED_EXTENSIONS = {'txt', 'pdf', 'docx'}
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 app.config['MAX_CONTENT_PATH'] = 16 * 1000 * 1000
 
@@ -226,8 +226,7 @@ def delete_post(post_id):
 
 
 def allowed_file(filename):
-    return '.' in filename and \
-           filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
+    return '.' in filename and filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
 
 
 @app.route('/upload', methods=['GET', 'POST'])
