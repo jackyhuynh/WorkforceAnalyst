@@ -42,15 +42,21 @@
 
         <!-- New Post -->
         {% if current_user.id == 1: %}
-        <div class="clearfix">
-          <a class="btn btn-primary float-right" href="{{url_for('add_new_post')}}">create new post</a>
+        <div class="container">
+          <div class="clearfix">
+            <a class="btn btn-primary float-right" href="{{url_for('add_new_post')}}">create new post</a>
+          </div>
         </div>
         {% endif %}
-
+        <br><hr><br>
         <!-- Upload -->
-        <div class="clearfix">
-          <a class="btn btn-primary float-right" href="{{url_for('upload_file')}}">UPLOAD RESUME</a>
+        <div class="container">
+          <div class="clearfix">
+            <a class="btn btn-primary float-right" href="{{url_for('upload_file')}}">UPLOAD RESUME</a>
+          </div>
+
         </div>
+
 
       </div>
     </div>
