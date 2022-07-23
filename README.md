@@ -30,25 +30,31 @@ A possible use case is a job recommendation system (what we are developing) wher
 
 ## Top 3 AI/ML Methods/algorithms (under consideration):
 The 3 ML algorithms that we plan to implement in our project are:
-a.	Random Forests
+a. Random Forests:
+
 Random Forest is a popular machine learning algorithm that belongs to the supervised learning technique. It can be used for both Classification and Regression problems in ML. It is based on the concept of ensemble learning, which is a process of combining multiple classifiers to solve a complex problem and improve the performance of the model.
+
 As the name suggests, "Random Forest is a classifier that contains several decision trees on various subsets of the given dataset and takes the average to improve the predictive accuracy of that dataset." Instead of relying on one decision tree, the random forest takes the prediction from each tree, and based on the majority votes of predictions, it predicts the final output.
 The greater number of trees in the forest leads to higher accuracy and prevents the problem of overfitting.
 
-b.	Support Vector Machines
+b. Support Vector Machines:
+
 Support Vector Machine or SVM is one of the most popular Supervised Learning algorithms, which is used for Classification as well as Regression problems. However, primarily, it is used for Classification problems in Machine Learning.
+
 The goal of the SVM algorithm is to create the best line or decision boundary that can segregate n-dimensional space into classes so that we can easily put the new data point in the correct category in the future. This best decision boundary is called a hyperplane.
 SVM chooses the extreme points/vectors that help in creating the hyperplane. These extreme cases are called support vectors; hence, the algorithm is termed a Support Vector Machine. 
 
 
-c.	KNN
+c. KNN:
+
 The k-nearest neighbors (KNN) algorithm is a simple, supervised machine learning algorithm that can be used to solve both classification and regression problems. The algorithm is based on the principle that similar data points (i.e. data points that are nearby in space) tend to have similar labels (i.e. they tend to belong to the same class). Therefore, the KNN algorithm can be used to predict the label of a new data point by looking at the labels of the data points that are nearby in space. The algorithm’s learning is:
+
 1.	Instance-based learning: Here we do not learn weights from training data to predict output (as in model-based algorithms) but use entire training instances to predict output for unseen data.
 2.	Lazy Learning: The model is not learned using training data prior and the learning process is postponed to a time when prediction is requested on the new instance.
 3.	Non-Parametricric: In KNN, there is no predefined form of the mapping function.
 
 ## Team Information & Tools:
-c.	Team members:
+a. Team members:
 -	Truc Huynh (huyntl02@pfw.edu): 
 1.	Roles: Software Developer/ Programmer 
 2.	Build Server (Front End, Back End), Database Schema, and Data Warehouse. Deploy Machine Learning Model into the web application, Clean-up data from the users (build data pipe) that transfers user’s resume into tidy data meaningful to the application’s model. Help with data analysis, tidy the job data, etc., Develop NLP, POS
@@ -58,7 +64,7 @@ c.	Team members:
 -	Sahithi Muppiri (mupps02@pfw.edu) 
 1.	Roles: ML Engineer
 2.	Develop the Machine Learning Model for the applications, in charge of data preprocessing and overall development process.
-d.	Tools:
+b. Tools:
 -	Heroku (to deploy the app)
 -	PyCharm (to develop the web application)
 -	Jupiter Notebook (to build machine learning model)
