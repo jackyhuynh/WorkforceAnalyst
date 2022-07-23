@@ -30,6 +30,7 @@ A possible use case is a job recommendation system (what we are developing) wher
 
 ## Top 3 AI/ML Methods/algorithms (under consideration):
 The 3 ML algorithms that we plan to implement in our project are:
+
 a. Random Forests:
 
 Random Forest is a popular machine learning algorithm that belongs to the supervised learning technique. It can be used for both Classification and Regression problems in ML. It is based on the concept of ensemble learning, which is a process of combining multiple classifiers to solve a complex problem and improve the performance of the model.
