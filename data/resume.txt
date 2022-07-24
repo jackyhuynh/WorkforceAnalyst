@@ -1,0 +1,31 @@
+Truc Huynh		
+[jackyhuynh87@gmail.com] 	
+[https://www.linkedin.com/in/trucdev/]
+[https://github.com/jackyhuynh]
+Experienced full-stack developer, project management & coordination through different industries with a strong technical background and analyzing skills. 
+EDUCATION & CERTIFICATION
+Master of Science, Computer Science [Purdue University Fort Wayne, Fort Wayne, IN]
+Certificate in Data Scientist & Machine Learning [North Carolina State University]
+Bachelor of Science, Computer Science [ECPI University, Newport News, VA]
+Associate in Cyber Security [De Anza College]
+Introduce to Self-Driving Car Certificate [Udacity.com]
+Python, React, Git, Docker, web development: self-learn [Udemy, HackerRank, Codility, and DataCamp]
+SKILLS
+Proficient with Office 365, MS Project, MS Visio, Jira, Git, GitHub, and Slack
+Experience in web application development with (HTML, CSS, JSON, Bootstrap, R Shiny, Python web server framework, Flask, RESTful API, and JavaScript, Heroku (PaaS))
+Experience in the software development lifecycle, Agile methodologies, data visualization, dashboard design (BI)
+Classroom experience in data mining, machine learning (Python, R), database technologies (SQL, MySQL), data analytics, data structures & algorithms (Python, C/ C++, Java), framework (Spring MVC, NET., Flask), IDE (Eclipse, Visual Studio, VS Code, Anaconda, PyCharm, Jupiter Notebook), Servlet (Apache Tomcat), automation, bot, software testing, script, ethical hacking, cyber security, UI/UX Design
+Experience in relationship building and explaining technical concepts to non-technical audiences. Highly collaborative, team-oriented, and pay attention to detail with the ability to multitask
+Working knowledge with Virtual machines, Windows, Linux, Mac OSX, AutoCAD, 3D Modelling
+Experience with inventory planning and supply chain management (forecasting, planning, optimization & logistics)
+EXPERIENCE
+Co-founder & Program Manager: [7 Figures Trader]
+Build an online training program to teach people to trade (stock, options, futures contracts). Work and strategize with others on cross-functional teams and stakeholders to design the web application and organization’s structure. Design the application prototype, content, communication methods, process of implementation, and risk management strategies. Using previous data to predict the next coming trade, monitor market volatility, and create the trading plans for the coming weeks.
+Co-founder & Business Analyst: [Luxe Nails & Spa L.L.C]
+Lead cross-functional decision-making & implementation to define infrastructure plan, business support systems, and operation plan. Provided advice and instruction on work methods, practices, and procedures to improve profits (through marketing, social media management, and staff training). Financial monitoring, budget management, internal management, and customer services. The result shows an increase in the sales records by 250% (second year) compared to the first fiscal year
+Logistic Specialist & Watercraft Engineer: [US Army • Fort Eustis, VA]
+Developing an inventory record and tracking database that ensures VSO warehouse equipment and inventory are 100% accountable. This database was evaluated to benefit my company in years (Army Achievement Medals & Commander’s Recommendation Letters). Maintaining inventory records of the Vessel Support Office. Preparing work schedules, and routine reports to the higher headquarters. Inventory planning and supply chain management.
+Teaching Assistant: [De Anza College• Cupertino, CA]
+Worked directly under the CIS Lab Manager toward any coding issues that students may submit. Guided students' projects to ensure they meet their instructor's requirements
+Information Technology Support Specialist: (Vietnam)
+Provided base-level IT support to clients. Identified, developed, installed, and monitored clients’ systems to ensure their efficiency. Conducted research to address customers’ concerns that reduced the loss of unsatisfied customers by 15% in my first fiscal year
