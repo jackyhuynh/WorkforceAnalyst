@@ -3,7 +3,7 @@ Truc Huynh
 [https://www.linkedin.com/in/trucdev/]
 [https://github.com/jackyhuynh]
 Experienced full-stack developer, project management & coordination through different industries with a strong technical background and analyzing skills. 
-EDUCATION & CERTIFICATION
+EDUCATION
 Master of Science, Computer Science [Purdue University Fort Wayne, Fort Wayne, IN]
 Certificate in Data Scientist & Machine Learning [North Carolina State University]
 Bachelor of Science, Computer Science [ECPI University, Newport News, VA]
