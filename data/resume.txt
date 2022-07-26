@@ -14,7 +14,7 @@ SKILLS
 Proficient with Office 365, MS Project, MS Visio, Jira, Git, GitHub, and Slack
 Experience in web application development with (HTML, CSS, JSON, Bootstrap, R Shiny, Python web server framework, Flask, RESTful API, and JavaScript, Heroku (PaaS))
 Experience in the software development lifecycle, Agile methodologies, data visualization, dashboard design (BI)
-Classroom experience in data mining, machine learning (Python, R), database technologies (SQL, MySQL), data analytics, data structures & algorithms (Python, C/ C++, Java), framework (Spring MVC, NET., Flask), IDE (Eclipse, Visual Studio, VS Code, Anaconda, PyCharm, Jupiter Notebook), Servlet (Apache Tomcat), automation, bot, software testing, script, ethical hacking, cyber security, UI/UX Design
+Classroom experience in data mining, machine learning, ML/AI (Python, R), database technologies (SQL, MySQL), data analytics, data structures & algorithms (Python, C/ C++, Java), framework (Spring MVC, NET., Flask), IDE (Eclipse, Visual Studio, VS Code, Anaconda, PyCharm, Jupiter Notebook), Servlet (Apache Tomcat), automation, bot, software testing, script, ethical hacking, cyber security, UI/UX Design
 Experience in relationship building and explaining technical concepts to non-technical audiences. Highly collaborative, team-oriented, and pay attention to detail with the ability to multitask
 Working knowledge with Virtual machines, Windows, Linux, Mac OSX, AutoCAD, 3D Modelling
 Experience with inventory planning and supply chain management (forecasting, planning, optimization & logistics)
