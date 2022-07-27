@@ -317,9 +317,7 @@ def upload_file():
             filename = secure_filename(file.filename)
             file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
             display = True
-            resume_data = read_resume()
-            resume_dict =
-
+            resume_dict = clean_resume_data(read_resume())
             return render_template("upload.html", current_user=current_user, name=filename, display=display,
                                    resume_dict=resume_dict)
 
