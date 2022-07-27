@@ -13,7 +13,6 @@ from werkzeug.utils import secure_filename
 import os
 import re
 
-
 app = Flask(__name__)
 app.config['SECRET_KEY'] = os.environ.get("SECRET_KEY")
 ckeditor = CKEditor(app)
@@ -77,6 +76,23 @@ class Comment(db.Model):
 
 db.create_all()
 
+
+def read_resume():
+    # Open text file resume
+    file1 = open('./data/resume.txt', 'r')
+    resume_data = []
+
+    while True:
+        # Get next line from file
+        line = file1.readline()
+        resume_data.append(line)
+        # if line is empty or end of file is reached
+        if not line:
+            break
+    file1.close()
+    return resume_data
+
+
 # Clean up the resume
 def clean_resume_data(resume_data):
     # Clean up address, school, name, number, take only character in to the new string list
@@ -85,7 +101,7 @@ def clean_resume_data(resume_data):
         word1 = " ".join(re.findall("[a-zA-Z]+", resume_data[i]))
         resume_data[i] = word1
 
-    # Using the keywords dictionary to hold all the keyword
+    # Using the keyword's dictionary to hold all the keyword
     keyword_dict = []
 
     for line in resume_data:
@@ -128,20 +144,14 @@ def clean_resume_data(resume_data):
                          "decision", "improve", "engineer", "efficiency",
                          "driving", "first", "futures", "instruction", "contracts", "strategies", "conducted",
                          "attention", "identified", "analytics", "evaluated"]
-
     for char in remove_characters:
         while char in keyword_dict:
             keyword_dict.remove(char)
-
     for char in soft_skill_remove:
         while char in keyword_dict:
             keyword_dict.remove(char)
-
     # remove the repeated word in the dictionary
     keyword_dict = list(dict.fromkeys(keyword_dict))
-
-    # Figure out the length of the keyword dictionaries
-    len(keyword_dict)
 
     return keyword_dict
 
@@ -159,6 +169,7 @@ def admin_only(f):
 @app.route('/')
 def get_all_posts():
     posts = BlogPost.query.all()
+
     return render_template("index.html", all_posts=posts, current_user=current_user)
 
 
@@ -319,33 +330,13 @@ def upload_file():
             file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
             display = True
             resume_dict = clean_resume_data(read_resume())
-            return render_template("upload.html", current_user=current_user, name=filename, display=display,
-                                   resume_dict=resume_dict)
+            return redirect(url_for("upload_file", current_user=current_user, name=filename, display=display,
+                                    resume_dict=resume_dict))
 
     return render_template("upload.html", current_user=current_user)
 
 
-def read_resume():
-    # Open text file resume
-    file1 = open('./data/resume.txt', 'r')
-    resume_data = []
-
-    while True:
-        # Get next line from file
-        line = file1.readline()
-        resume_data.append(line)
-        # if line is empty or end of file is reached
-        if not line:
-            break
-    file1.close()
-    return resume_data
-
-
-
-
-
 if __name__ == "__main__":
     app.run(debug=True)
-
 
 # https://www.geeksforgeeks.org/deploy-machine-learning-model-using-flask/
