@@ -1,6 +1,6 @@
 # Indeed_jobs_Analyst
 
-## 
+## [Check it live](https://indeed-job-analyst.herokuapp.com/)
 ## Introduction
 The project aims to solve one of the most challenging problems of the workforce. Find the best opportunity for candidates based on their resumes. The application also aims to prepare users with better knowledge of career improvement by getting career knowledge from career experts. Besides the recommendation system, the app equips with a career blog from Indeed.
 
