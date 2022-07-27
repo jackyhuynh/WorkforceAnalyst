@@ -231,7 +231,9 @@ def allowed_file(filename):
 
 @app.route('/upload', methods=['GET', 'POST'])
 def upload_file():
+    display = False
     if request.method == 'POST':
+
         # check if the post request has the file part
         if 'file' not in request.files:
             flash('No file part')
@@ -245,8 +247,13 @@ def upload_file():
         if file and allowed_file(file.filename):
             filename = secure_filename(file.filename)
             file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
-            return redirect(url_for('upload_file', name=filename))
+            display = True
+            return render_template("upload.html", current_user=current_user, name=filename, display=display)
+
     return render_template("upload.html", current_user=current_user)
+
+
+def
 
 
 if __name__ == "__main__":
