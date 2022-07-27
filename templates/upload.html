@@ -18,18 +18,32 @@
     </div>
   </header>
 
-
   <div class="container">
-    <h1>Upload New Resume</h1>
-    <form class="container" method=post enctype=multipart/form-data>
-      <div class="row">
-        <input type=file name=file>
-        <input class="btn btn-primary float-right" type=submit value=Upload href="{{url_for('get_all_posts')}}">
+
+    <div class="row">
+      <div class="col-lg-8 col-md-10 mx-auto content">
+        <h1>Upload New Resume</h1><br>
+        <form class="container" method=post enctype=multipart/form-data>
+          <input type=file name=file>
+          <input class="btn btn-primary float-right" type=submit value=Upload href="{{url_for('upload_file')}}">
+        </form>
       </div>
-    </form>
-  </div>
+    </div>
 
-  <div class="container">
+    <!-- Keyword List dictionary -->
+    <div class="row">
+      <div class="col-lg-8 col-md-10 mx-auto content">
+        {% if display == True: %}
+          <br><hr><br>
+          <h1>Keyword List</h1>
+          {% for keyword in resume_dict: %}
+            {{ keyword }},
+          {% endfor %}
+        {% endif %}
+      </div>
+    </div>
+
+    <!-- Error Messages -->
     <div class="row">
       <div class="col-lg-8 col-md-10 mx-auto content">
       {% with messages = get_flashed_messages() %}
@@ -43,15 +57,14 @@
     </div>
   </div>
 
-  <div class="container">
-    <div class="row">
-      <div class="col-lg-8 col-md-10 mx-auto content">
-        {% if display == True: %}
-        <p>Finish upload</p>
-        {% endif %}
-      </div>
-    </div>
-  </div>
+
+
+
+
+
+
+
+
 
 {% include "footer.html" %}
 {% endblock %}
