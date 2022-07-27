@@ -427,8 +427,9 @@ def upload_file():
             dftool_top_list = top_tool_list(tool_list, tool_keywords_dict, index=50)
 
             return render_template("upload.html", current_user=current_user, name=filename, display=display,
-                                   resume_dict=resume_dict, tables=[dftool_top_list.to_html(classes='data')],
-                                   titles=dftool_top_list.columns.values)
+                                   resume_dict=resume_dict,
+                                   column_names=dftool_top_list.columns.values, row_data=list(dftool_top_list.values.tolist()),
+                                   link_column="Patient ID", zip=zip)
 
     return render_template("upload.html", current_user=current_user)
 
