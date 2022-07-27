@@ -330,8 +330,8 @@ def upload_file():
             file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
             display = True
             resume_dict = clean_resume_data(read_resume())
-            return redirect(url_for("upload_file", current_user=current_user, name=filename, display=display,
-                                    resume_dict=resume_dict))
+            return render_template("upload.html", current_user=current_user, name=filename, display=display,
+                                    resume_dict=resume_dict)
 
     return render_template("upload.html", current_user=current_user)
 
