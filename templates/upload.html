@@ -19,15 +19,15 @@
   </header>
 
 
-    <div class="container">
-        <h1>Upload New Resume</h1>
-        <form class="container" method=post enctype=multipart/form-data>
-          <div class="row">
-            <input type=file name=file>
-            <input class="btn btn-primary float-right" type=submit value=Upload href="{{url_for('get_all_posts')}}">
-          </div>
-        </form>
-    </div>
+  <div class="container">
+    <h1>Upload New Resume</h1>
+    <form class="container" method=post enctype=multipart/form-data>
+      <div class="row">
+        <input type=file name=file>
+        <input class="btn btn-primary float-right" type=submit value=Upload href="{{url_for('get_all_posts')}}">
+      </div>
+    </form>
+  </div>
 
   <div class="container">
     <div class="row">
@@ -43,6 +43,15 @@
     </div>
   </div>
 
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-md-10 mx-auto content">
+        {% if display == True: %}
+        <p>Finish upload</p>
+        {% endif %}
+      </div>
+    </div>
+  </div>
 
 {% include "footer.html" %}
 {% endblock %}
