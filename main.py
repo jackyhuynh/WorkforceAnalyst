@@ -11,17 +11,13 @@ from forms import LoginForm, RegisterForm, CreatePostForm, CommentForm
 from flask_gravatar import Gravatar
 from werkzeug.utils import secure_filename
 import pandas as pd
-import matplotlib.pyplot as plt
-import sklearn
 import os
 import re
 import nltk
 from nltk import pos_tag
 from nltk.stem import PorterStemmer
 from nltk.tokenize import word_tokenize
-from plotly import __version__
-from plotly.offline import download_plotlyjs, init_notebook_mode, plot, iplot
-import plotly.graph_objs as go
+
 
 nltk.download('averaged_perceptron_tagger')
 nltk.download('punkt')
