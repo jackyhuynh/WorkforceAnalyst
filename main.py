@@ -11,6 +11,7 @@ from forms import LoginForm, RegisterForm, CreatePostForm, CommentForm
 from flask_gravatar import Gravatar
 from werkzeug.utils import secure_filename
 import os
+import re
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = os.environ.get("SECRET_KEY")
@@ -74,6 +75,74 @@ class Comment(db.Model):
 
 
 db.create_all()
+
+# Clean up the resume
+def clean_resume_data(resume_data):
+    # Clean up address, school, name, number, take only character in to the new string list
+    for i in range(0, len(resume_data)):
+        resume_data[i] = re.sub(r'\[.*?\]', '', resume_data[i])
+        word1 = " ".join(re.findall("[a-zA-Z]+", resume_data[i]))
+        resume_data[i] = word1
+
+    # Using the keywords dictionary to hold all the keyword
+    keyword_dict = []
+
+    for line in resume_data:
+        li = list(line.split(" "))
+        for string_ in li:
+            keyword_dict.append(string_.lower())  # Convert the string to lower
+
+    # Character that does not necessary to the search can be removed
+    remove_characters = ['', 'a', 'truc', 'huynh', 'through', 'self', 'classroom', 'ide', 'concepts', 'founder',
+                         'manager', 'online', 'first', 'second', 'are', 'was', 'unsatisfied',
+                         'an', 'to', 'on', 'and', 'that', 'this', 'the', 'by', 'in', 'with', 's', 'of', 'non', 'co',
+                         'my', 'your', 'his', 'her', 'they', 'their', 'he', 'she', 'it', 'under',
+                         'may', 'guided', 'submit', 'vietnam', 'cis', 'any', 'unsatisfied', 'services', 'for',
+                         'watercraft', 'specialist', 'us', 'recommendation', 'years', 'work', 'team',
+                         'customer', 'ensure', 'supply', 'work', 'year', 'plans', 'customer', 'developing', 'records',
+                         'technologies', 'computer', 'monitoring', 'building', 'market',
+                         'ensures', 'supply', 'options', 'learn', 'master', 'recommendation', 'science', 'risk',
+                         'strategize', 'experienced', 'create', 'tracking', 'stock', 'students',
+                         'previous', 'concerns', 'structures', 'budget', 'next', 'methods', 'stakeholders', 'define',
+                         'making', 'profits', 'achievement', 'address', 'routine', 'installed',
+                         'visual', 'higher', 'coming', 'teaching', 'letters', 'chain', 'content', 'trading', 'cross',
+                         'headquarters', 'audiences', 'increase', 'warehouse', 'loss', 'car',
+                         'advice', 'highly', 'shows', 'toward', 'commander', 'compare', 'fiscal', 'directly',
+                         'instructor', 'reduced', 'working', 'project', 'monitor', 'learning',
+                         'ethical', 'teach', 'trade']
+
+    soft_skill_remove = ["structure", "experience", "requirements", "worked", "years", "others", "skills",
+                         "communication", "ability", "application", "program", "customers",
+                         "company", "information", "plan", "knowledge", "benefit", "process", "training", "developed",
+                         "assistant", "support", "schedules", "education",
+                         "provided", "business", "operation", "systems", "oriented", "level", "base", "strong",
+                         "procedures", "organization", "functional", "practices",
+                         "reports", "office", "people", "certificate", "pay", "industries", "accountable", "staff",
+                         "associate", "full", "equipment", "technology",
+                         "maintaining", "design", "record", "clients", "bachelor", "projects", "issues", "using",
+                         "relationship", "internal", "technical", "collaborative",
+                         "meet", "implementation", "sales", "background", "detail", "preparing", "lead", "build",
+                         "coordination", "monitored", "different", "software",
+                         "marketing", "result", "weeks", "testing", "financial", "security", "proficient", "ensure",
+                         "decision", "improve", "engineer", "efficiency",
+                         "driving", "first", "futures", "instruction", "contracts", "strategies", "conducted",
+                         "attention", "identified", "analytics", "evaluated"]
+
+    for char in remove_characters:
+        while char in keyword_dict:
+            keyword_dict.remove(char)
+
+    for char in soft_skill_remove:
+        while char in keyword_dict:
+            keyword_dict.remove(char)
+
+    # remove the repeated word in the dictionary
+    keyword_dict = list(dict.fromkeys(keyword_dict))
+
+    # Figure out the length of the keyword dictionaries
+    len(keyword_dict)
+
+    return keyword_dict
 
 
 def admin_only(f):
@@ -248,15 +317,36 @@ def upload_file():
             filename = secure_filename(file.filename)
             file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
             display = True
-            return render_template("upload.html", current_user=current_user, name=filename, display=display)
+            resume_data = read_resume()
+            resume_dict =
+
+            return render_template("upload.html", current_user=current_user, name=filename, display=display,
+                                   resume_dict=resume_dict)
 
     return render_template("upload.html", current_user=current_user)
 
 
-def
+def read_resume():
+    # Open text file resume
+    file1 = open('./data/resume.txt', 'r')
+    resume_data = []
+
+    while True:
+        # Get next line from file
+        line = file1.readline()
+        resume_data.append(line)
+        # if line is empty or end of file is reached
+        if not line:
+            break
+    file1.close()
+    return resume_data
+
+
+
 
 
 if __name__ == "__main__":
     app.run(debug=True)
+
 
 # https://www.geeksforgeeks.org/deploy-machine-learning-model-using-flask/
