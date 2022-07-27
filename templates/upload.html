@@ -43,6 +43,21 @@
       </div>
     </div>
 
+    <!-- Stat table -->
+    <div class="row">
+      <div class="col-lg-8 col-md-10 mx-auto content">
+        {% if display == True: %}
+          <br><hr><br>
+          <h1>Stats Table</h1>
+            {% for table in tables %}
+              {{titles[loop.index]}}
+              {{ table|safe }}
+            {% endfor %}
+        {% endif %}
+      </div>
+    </div>
+
+
     <!-- Error Messages -->
     <div class="row">
       <div class="col-lg-8 col-md-10 mx-auto content">
