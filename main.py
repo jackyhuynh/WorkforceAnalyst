@@ -10,8 +10,21 @@ from flask_login import UserMixin, login_user, LoginManager, login_required, cur
 from forms import LoginForm, RegisterForm, CreatePostForm, CommentForm
 from flask_gravatar import Gravatar
 from werkzeug.utils import secure_filename
+import pandas as pd
+import matplotlib.pyplot as plt
+import sklearn
 import os
 import re
+import nltk
+from nltk import pos_tag
+from nltk.stem import PorterStemmer
+from nltk.tokenize import word_tokenize
+from plotly import __version__
+from plotly.offline import download_plotlyjs, init_notebook_mode, plot, iplot
+import plotly.graph_objs as go
+
+nltk.download('averaged_perceptron_tagger')
+nltk.download('punkt')
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = os.environ.get("SECRET_KEY")
@@ -77,6 +90,84 @@ class Comment(db.Model):
 db.create_all()
 
 
+def read_data_file(path):
+    # Read in the data file
+    dfjob = pd.read_csv(path)
+
+    dfjob.drop(
+        ['#', 'jobid', 'country', 'apply_link', 'company_link', 'date_posted_parsed', 'current_url', 'date_posted',
+         'domain', 'region'], axis=1, inplace=True)
+    # Drop the row where the company name or link is blank:
+    dfjob.dropna(axis=0, how='all', subset=['company_name', 'job_type'], thresh=2, inplace=True)
+    # Assume all the missing value in salary_formated is negotiable (50% of the dataset)
+    dfjob['salary_formatted'] = dfjob['salary_formatted'].fillna('Negotiable')
+    # Fill in the rating with 0
+    dfjob['company_rating'] = dfjob['company_rating'].fillna(0.0)
+    dfjob['company_reviews_count'] = dfjob['company_reviews_count'].fillna(0.0)
+
+    return dfjob
+
+
+def create_token(keyword_dict, dfjob):
+    pos_tag(keyword_dict)
+    ps = PorterStemmer()
+
+    # process the job description.
+    def prepare_job_desc(desc):
+        # tokenize description.
+        tokens = word_tokenize(desc)
+
+        # Parts of speech (POS) tag tokens.
+        token_tag = pos_tag(tokens)
+
+        # Only include some POS tags.
+        include_tags = ['VBN', 'VBD', 'JJ', 'JJS', 'JJR', 'CD', 'NN', 'NNS', 'NNP', 'NNPS']
+        filtered_tokens = [tok for tok, tag in token_tag if tag in include_tags]
+
+        # stem words.
+        stemmed_tokens = [ps.stem(tok).lower() for tok in filtered_tokens]
+        return set(stemmed_tokens)
+
+    dfjob['job_description_word_set'] = dfjob['description_text'].map(prepare_job_desc)
+
+    # process the keywords
+    tool_keywords_set = set(
+        [ps.stem(tok) for tok in keyword_dict])  # stem the keywords (since the job description is also stemmed.)
+    tool_keywords_dict = {ps.stem(tok): tok for tok in
+                          keyword_dict}  # use this dictionary to revert the stemmed words back to the original.
+    return tool_keywords_set, tool_keywords_dict
+
+
+def freq_skill_list(dfjob, tool_keywords_set, country_code=''):
+    tool_list = []
+
+    msk = dfjob['country_code'] != country_code  # just in case you want to filter the data.
+    num_postings = len(dfjob[msk].index)
+    for i in range(num_postings):
+        job_desc = dfjob[msk].iloc[i]['description_text'].lower()
+        job_desc_set = dfjob[msk].iloc[i]['job_description_word_set']
+        # check if the keywords are in the job description. Look for exact match by token.
+        tool_words = tool_keywords_set.intersection(job_desc_set)
+        # label the job descriptions without any tool keywords.
+        if len(tool_words) == 0:
+            tool_list.append('nothing specified')
+
+        tool_list += list(tool_words)
+
+    return tool_list
+
+
+#
+def top_tool_list(tool_list, tool_keywords_dict, index):
+    # create the list of tools.
+    df_tool = pd.DataFrame(data={'cnt': tool_list})
+    df_tool = df_tool.replace(tool_keywords_dict)
+    df_tool_top = df_tool['cnt'].value_counts().reset_index().rename(columns={'index': 'tool'}).iloc[:index]
+
+    return df_tool_top
+
+
+# Read the resume in
 def read_resume():
     # Open text file resume
     file1 = open('./data/resume.txt', 'r')
@@ -330,8 +421,14 @@ def upload_file():
             file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
             display = True
             resume_dict = clean_resume_data(read_resume())
+            data_file = read_data_file("./data/data.csv")
+            tool_keywords_set, tool_keywords_dict = create_token(resume_dict, data_file)
+            tool_list = freq_skill_list(data_file, tool_keywords_set)
+            dftool_top_list = top_tool_list(tool_list, tool_keywords_dict, index=50)
+
             return render_template("upload.html", current_user=current_user, name=filename, display=display,
-                                    resume_dict=resume_dict)
+                                   resume_dict=resume_dict, tables=[dftool_top_list.to_html(classes='data')],
+                                   titles=dftool_top_list.columns.values)
 
     return render_template("upload.html", current_user=current_user)
 
