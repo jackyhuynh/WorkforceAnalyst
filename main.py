@@ -163,6 +163,7 @@ def top_tool_list(tool_list, tool_keywords_dict, index):
     df_tool = pd.DataFrame(data={'cnt': tool_list})
     df_tool = df_tool.replace(tool_keywords_dict)
     df_tool_top = df_tool['cnt'].value_counts().reset_index().rename(columns={'index': 'tool'}).iloc[:index]
+    df_tool_top['stats_percent'] = round((df_tool_top['cnt']/len(df_tool_top))*100)
 
     return df_tool_top
 
