@@ -13,6 +13,7 @@ from werkzeug.utils import secure_filename
 import os
 import re
 
+
 app = Flask(__name__)
 app.config['SECRET_KEY'] = os.environ.get("SECRET_KEY")
 ckeditor = CKEditor(app)
