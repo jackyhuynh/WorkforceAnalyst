@@ -6,8 +6,8 @@ from functools import wraps
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy.orm import relationship
-from flask_login import UserMixin, login_user, LoginManager, login_required, current_user, logout_user
-from forms import LoginForm, RegisterForm, CreatePostForm, CommentForm
+from flask_login import UserMixin, login_user, LoginManager, current_user, logout_user
+from source.forms import LoginForm, RegisterForm, CreatePostForm, CommentForm
 from flask_gravatar import Gravatar
 from werkzeug.utils import secure_filename
 import pandas as pd
@@ -29,7 +29,8 @@ Bootstrap(app)
 gravatar = Gravatar(app, size=100, rating='g', default='retro', force_default=False, force_lower=False, use_ssl=False,
                     base_url=None)
 
-##CONNECT TO DB
+
+# CONNECT TO DB
 app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get("DATABASE_URL", "sqlite:///blog.db")
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config['SECRET_KEY'] = '8BYkEfBA6O6donzWlSihBXox7C0sKR6b'
@@ -37,7 +38,8 @@ db = SQLAlchemy(app)
 login_manager = LoginManager()
 login_manager.init_app(app)
 
-##UPLOAD FILE
+
+# UPLOAD FILE
 UPLOAD_FOLDER = './data'
 ALLOWED_EXTENSIONS = {'txt', 'pdf', 'docx'}
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
@@ -49,7 +51,7 @@ def load_user(user_id):
     return User.query.get(int(user_id))
 
 
-##CONFIGURE TABLE
+# CONFIGURE TABLE
 class User(UserMixin, db.Model):
     __tablename__ = "users"
     id = db.Column(db.Integer, primary_key=True)
@@ -167,7 +169,7 @@ def top_tool_list(tool_list, tool_keywords_dict, index):
 # Read the resume in
 def read_resume():
     # Open text file resume
-    file1 = open('./data/resume.txt', 'r')
+    file1 = open('../data_analyst/data/resume.txt', 'r')
     resume_data = []
 
     while True:
@@ -418,7 +420,7 @@ def upload_file():
             file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
             display = True
             resume_dict = clean_resume_data(read_resume())
-            data_file = read_data_file("./data/data.csv")
+            data_file = read_data_file("../data_analyst/data/data.csv")
             tool_keywords_set, tool_keywords_dict = create_token(resume_dict, data_file)
             tool_list = freq_skill_list(data_file, tool_keywords_set)
             dftool_top_list = top_tool_list(tool_list, tool_keywords_dict, index=50)
@@ -433,5 +435,3 @@ def upload_file():
 
 if __name__ == "__main__":
     app.run(debug=True)
-
-# https://www.geeksforgeeks.org/deploy-machine-learning-model-using-flask/
