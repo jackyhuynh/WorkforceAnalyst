@@ -169,7 +169,7 @@ def top_tool_list(tool_list, tool_keywords_dict, index):
 # Read the resume in
 def read_resume():
     # Open text file resume
-    file1 = open('../data_analyst/data/resume.txt', 'r')
+    file1 = open('../analyst/data/resume.txt', 'r')
     resume_data = []
 
     while True:
@@ -420,7 +420,7 @@ def upload_file():
             file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
             display = True
             resume_dict = clean_resume_data(read_resume())
-            data_file = read_data_file("../data_analyst/data/data.csv")
+            data_file = read_data_file("../analyst/data/data.csv")
             tool_keywords_set, tool_keywords_dict = create_token(resume_dict, data_file)
             tool_list = freq_skill_list(data_file, tool_keywords_set)
             dftool_top_list = top_tool_list(tool_list, tool_keywords_dict, index=50)
